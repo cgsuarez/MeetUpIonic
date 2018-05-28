@@ -5,7 +5,7 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage = ListPage;
+  rootPage = LoginPage;
 
   constructor(
     public platform: Platform,
@@ -32,4 +32,4 @@ export class MyApp {
       this.splashScreen.hide();
     });
   }
-}
+} 

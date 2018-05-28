@@ -35,23 +35,31 @@ export class AddbookPage {
 
   onAddBook(addBookForm: any){
 
-    let alert = this.alrCtrl.create({
-    	title: 'Confirmacion',
-    	subTitle: 'Se ha registrado un nuevo libro',
-    	buttons: ['OK']
-    });
-
-    alert.present();
 
    	console.log('addBook: ' + JSON.stringify(this.book));
    	this.libraryProvider.addBook(this.book).then((result)=>{
-   		this.book = {};
    		addBookForm.form.reset();
-   		console.log('ok');
-   		//alert.dismiss();
+
+	    let alert = this.alrCtrl.create({
+	    	title: 'Confirmacion',
+	    	subTitle: 'Se ha registrado un nuevo libro',
+	    	buttons: ['OK']
+	    });
+
+	    alert.present();
+
+
    	}).catch((error)=>{
 		console.log('error: ' + error);
-		//alert.dismiss();
+		
+		 let alert = this.alrCtrl.create({
+	    	title: 'Error',
+	    	subTitle: 'Ha ocurrido un error',
+	    	buttons: ['OK']
+	    });
+
+	    alert.present();
+
    	});
    	
   }

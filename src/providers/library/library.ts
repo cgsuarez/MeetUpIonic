@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book } from '../../models/book';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/concat';
@@ -13,7 +14,6 @@ import { v4 as uuid } from 'uuid';
 
 import { AngularFirestore, DocumentChangeAction, AngularFirestoreCollection } from 'angularfire2/firestore';
 
-import { Book } from '../../models/book';
 
 @Injectable()
 export class LibraryProvider {

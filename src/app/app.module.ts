@@ -5,9 +5,11 @@ import { MyApp } from './app.component';
 
 import { ListPage } from '../pages/list/list';
 import { AddbookPage } from '../pages/addbook/addbook';
+import { LoginPage } from '../pages/login/login';
 
 import { config } from './app.firebaseconfig';
 
+import {GooglePlus} from '@ionic-native/google-plus';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -17,12 +19,14 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LibraryProvider } from '../providers/library/library';
+import { AuthenticatorProvider } from '../providers/authenticator/authenticator';
 
 @NgModule({
   declarations: [
     MyApp,
     ListPage,
-    AddbookPage
+    AddbookPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -35,13 +39,16 @@ import { LibraryProvider } from '../providers/library/library';
   entryComponents: [
     MyApp,
     ListPage,
-    AddbookPage
+    AddbookPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    GooglePlus,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LibraryProvider
+    LibraryProvider,
+    AuthenticatorProvider
   ]
 })
 export class AppModule {}
