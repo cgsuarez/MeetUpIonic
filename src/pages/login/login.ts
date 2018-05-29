@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AuthenticatorProvider } from '../../providers/authenticator/authenticator';
 
+import { ListPage } from '../list/list';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -21,12 +23,27 @@ export class LoginPage {
   			public authProvider: AuthenticatorProvider) {
   }
 
+  ionViewWillEnter(){
+  	  this.authProvider.getUserInfo().subscribe((user)=>{
+  	  	console.log('user: ' + JSON.stringify(user));
+  	  	if(user){
+  	  		this.navCtrl.setRoot(ListPage);
+  	  	}
+  	  });
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
   doGoogleLogin(){
-  		this.authProvider.googleLogin();
+  		this.authProvider.googleLogin().then(()=>{
+  			console.log('auth: ok');
+
+  		},
+  		(err)=>{
+  			console.log('err: ' + err);
+  		});
   }
 
 }

@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book } from '../../models/book';
 import { Observable } from 'rxjs/Observable';
@@ -10,9 +9,9 @@ import 'rxjs/add/operator/first';
 import 'rxjs/add/observable/zip';
 import 'rxjs/add/observable/concat';
 import 'rxjs/add/observable/forkJoin';
-import { v4 as uuid } from 'uuid';
 
-import { AngularFirestore, DocumentChangeAction, AngularFirestoreCollection } from 'angularfire2/firestore';
+
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 
 @Injectable()

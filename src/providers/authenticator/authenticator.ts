@@ -14,17 +14,19 @@ export class AuthenticatorProvider {
 
   constructor(private afAuth: AngularFireAuth,
   		private gplus: GooglePlus,
-  		private platform: Platform) {
-  
+  		private platform: Platform) { 
   		this.user = this.afAuth.authState;
+  }
 
+  getUserInfo(){
+  	return this.user;
   }
 
   googleLogin(){
   	if(this.platform.is('cordova')){
-  		this.nativeGoogleLogin();
+  		return this.nativeGoogleLogin();
   	}else{
-  		this.webGoogleLogin();
+  		return this.webGoogleLogin();
   	}
   }
 
@@ -48,15 +50,12 @@ export class AuthenticatorProvider {
 
  async webGoogleLogin(): Promise<void>{
   	try{
-
-
   		const provider = new firebase.auth.GoogleAuthProvider();
   		const credential = await this.afAuth.auth.signInWithPopup(provider);
-
+  		return credential;
   	}catch(err){
   		console.log(err);
   	}
-
   }
 
   logoff(){

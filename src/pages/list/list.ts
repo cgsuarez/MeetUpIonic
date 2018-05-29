@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 import { Book } from '../../models/book';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { AngularFirestore, DocumentChangeAction, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from "rxjs/Subscription";
-
+import { AngularFirestore } from 'angularfire2/firestore';
 import { LibraryProvider } from '../../providers/library/library';
 
 import { AddbookPage } from '../addbook/addbook';
