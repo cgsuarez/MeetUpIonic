@@ -8,13 +8,13 @@ import { Platform } from 'ionic-angular'
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class AuthenticatorProvider {
+export class AuthProvider {
 
   user: Observable<firebase.User>;
 
   constructor(private afAuth: AngularFireAuth,
   		private gplus: GooglePlus,
-  		private platform: Platform) { 
+  		private platform: Platform) {
   		this.user = this.afAuth.authState;
   }
 
@@ -23,9 +23,11 @@ export class AuthenticatorProvider {
   }
 
   googleLogin(){
-  	if(this.platform.is('cordova')){
+  	if(this.platform.is('cordova') ){
+      console.log('platform cordova');
   		return this.nativeGoogleLogin();
   	}else{
+      console.log('platform web');
   		return this.webGoogleLogin();
   	}
   }
@@ -33,7 +35,7 @@ export class AuthenticatorProvider {
   async nativeGoogleLogin(): Promise<void>{
   	try{
   		const gplusUser = await this.gplus.login({
-  			'webClientId': '554540938006-epe2bjscom78tv2oeovfjeva7gal0va0.apps.googleusercontent.com',
+  			'webClientId': '652649285803-htpvim5191ku646242i3lds3h203jev4.apps.googleusercontent.com',
   			'offline': true,
   			'scopes': 'profile email'
   		});

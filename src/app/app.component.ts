@@ -4,8 +4,9 @@ import { Platform, Nav, MenuController } from 'ionic-angular';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { LoginPage } from '../pages/login/login';
-import { AuthenticatorProvider } from '../providers/authenticator/authenticator';
+import { AuthProvider } from '../providers/auth/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,17 +19,19 @@ export class MyApp {
 
   constructor(
     public platform: Platform,
-    public statusBar: StatusBar,
-    public splashScreen: SplashScreen,
     public menuCtrl: MenuController,
-    public authProvider: AuthenticatorProvider,
+    public authProvider: AuthProvider,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen
   ) {
     this.initializeApp();
 
     this.authProvider.getUserInfo().subscribe((user)=>{
-      this.user = user;
+      if(user){
+        console.log('user: ' + JSON.stringify(user));
+        this.user = user;
+      }
     });
-
 
   }
 
@@ -41,10 +44,11 @@ export class MyApp {
     });
   }
 
-   logoff(){
-     this.nav.setRoot(LoginPage);
-     this.nav.popToRoot();
-     this.menuCtrl.close();
-     this.authProvider.logoff();
+  logoff(){
+      this.authProvider.logoff();
+      this.nav.setRoot(LoginPage);
+      this.nav.popToRoot();
+      this.menuCtrl.close();
   }
-} 
+
+}

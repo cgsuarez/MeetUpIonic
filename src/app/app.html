@@ -1,21 +1,23 @@
 <ion-menu [content]="content">
-	<ion-header>
-		<ion-title>Libreria</ion-title>
-	</ion-header>
+    <ion-header>
+        <ion-title>Bienvenidos</ion-title>
+    </ion-header>
 
-	<ion-content>
-		<ion-list>
-			<ion-item *ngIf="user">
-				<ion-avatar item-start>
-					<img [src]="user.photoURL" />
-				</ion-avatar> 
-				<h3>{{user.displayName}}</h3>
-			</ion-item>
-			<ion-item>
-					<button ion-button clear (click)="logoff()">Salir</button>
-			</ion-item>
-		</ion-list>		
-	</ion-content>
+    <ion-content>
+        <ion-list>
+            <ion-item *ngIf="user">
+                <ion-avatar item-start>
+                    <img [src]="user.photoURL" />
+                </ion-avatar>
+                <h3>{{user.displayName}}</h3>
+            </ion-item>
+            <ion-item *ngIf="user">
+
+                <button ion-button clear (click)="logoff()">Salir</button>
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
 </ion-menu>
 
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

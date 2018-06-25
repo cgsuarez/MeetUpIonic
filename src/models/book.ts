@@ -1,6 +1,6 @@
-export class Book {
-	
-	public isbn: string;
-	public name: string;
+export interface Book {
+
+   isbn: string;
+   name: string;
 
 }

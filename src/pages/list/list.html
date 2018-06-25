@@ -1,23 +1,27 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>Libros</ion-title>
+    <ion-title>Listado de Libros</ion-title>
     <ion-buttons start>
-      <button ion-button menuToggle>
-          <ion-icon name="list"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons end>
-        <button ion-button (click)="onAddBookButton()">
-            <ion-icon name="add"></ion-icon>
+        <button ion-button menuToggle>
+            <ion-icon name="list"></ion-icon>
         </button>
     </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button (click)="goToAddPage()">
+          <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content>
+
+<ion-content padding>
   <ion-list>
-    <ion-item  *ngFor="let book of books">
-        {{book.name}}
-    </ion-item>
+      <ion-item *ngFor="let book of books">
+          {{book.name}}
+      </ion-item>
   </ion-list>
 </ion-content>

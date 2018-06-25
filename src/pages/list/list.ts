@@ -1,40 +1,34 @@
 import { Component } from '@angular/core';
-import { Book } from '../../models/book';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { AngularFirestore } from 'angularfire2/firestore';
+import { Book } from '../../models/book';
+
 import { LibraryProvider } from '../../providers/library/library';
 
 import { AddbookPage } from '../addbook/addbook';
 
+@IonicPage()
 @Component({
   selector: 'page-list',
-  templateUrl: 'list.html'
+  templateUrl: 'list.html',
 })
 export class ListPage {
 
-   private books: Book[] = [];
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public libraryProvider: LibraryProvider,
-    public storage: AngularFirestore) {
+  books: Book[] = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public libraryProvider: LibraryProvider) {
   }
 
-  public ionViewDidLoad() {
-      this.libraryProvider.getBooks().subscribe( (books) => {
-        console.log('books: ' + JSON.stringify(books));
-          this.books = books;
-      });
+  ionViewDidLoad() {
+     this.libraryProvider.getBooks().subscribe((books)=>{
+        this.books = books;
+     });
   }
 
-  public ionViewWillUnload() {
-
-  }
-
-  onAddBookButton(){
+  goToAddPage(){
     this.navCtrl.push(AddbookPage);
   }
-
 
 }

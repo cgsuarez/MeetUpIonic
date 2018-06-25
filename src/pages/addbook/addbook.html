@@ -7,25 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>addbook</ion-title>
+    <ion-title>Agregar Libros</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<form #f="ngForm" (ngSubmit)="onAddBook(f)">
-		<ion-list>
-			<ion-item>
-					<ion-label color="primary" floating>ISBN</ion-label>
-					<ion-input [(ngModel)]="book.isbn" name="isbn" required></ion-input>
-			</ion-item>
-			<ion-item>
-					<ion-label color="primary" floating>Nombre</ion-label>
-					<ion-input [(ngModel)]="book.name" name="name" required></ion-input>
-			</ion-item>
-		</ion-list>		
-		<button ion-button type="submit" block [disabled]="!f.valid">Agregar Libro</button>
-	</form>
-
+  <form #f="ngForm" (ngSubmit)="addBook(f)">
+      <ion-list>
+          <ion-item>
+              <ion-label color="primary" floating>ISBN</ion-label>
+              <ion-input [(ngModel)]="book.isbn" name="isbn" required></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label color="primary" floating>Nombre</ion-label>
+              <ion-input [(ngModel)]="book.name" name="name" required></ion-input>
+          </ion-item>
+      </ion-list>
+      <button ion-button type="submit" [disabled]="!f.valid">Agregar Libro</button>
+  </form>
 </ion-content>
